@@ -85,7 +85,7 @@ public class InventoryItem
     private readonly float _volume;
     private readonly float _weight;
 
-    public InventoryItem(string name,  float volume, float weight)
+    public InventoryItem(string name, float volume, float weight)
     {
         if (volume <= 0f || weight <= 0f)
         {
