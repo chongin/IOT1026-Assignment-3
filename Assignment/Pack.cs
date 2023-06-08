@@ -2,7 +2,7 @@
 
 public class Pack
 {
-    const float EPSILON = 0.0001f;
+    //const float EPSILON = 0.0001f;
 
     private readonly List<InventoryItem> _items; // You can use another data structure here if you prefer.
     // You may need another private member variable if you use an array data structure.
@@ -22,7 +22,7 @@ public class Pack
     // This constructor is not complete, but it is a good start.
     public Pack(int maxCount, float maxVolume, float maxWeight)
     {
-        if (maxCount < 0 || maxVolume < EPSILON || maxWeight < EPSILON)
+        if (maxCount < 0 || maxVolume < 0 || maxWeight < 0)
         {
             throw new ArgumentOutOfRangeException($"An item can't have {maxCount} max count,  {maxVolume} maxvolume or {maxWeight} max weight");
         }
@@ -52,15 +52,16 @@ public class Pack
 
         float weight = item.GetWeight();
         float volume = item.GetVolume();
-        _currentWeight += weight;
-        _currentVolume += volume;
-
         // check the weight or volume will over or not.
         if (_currentWeight > _maxWeight || _currentVolume > _maxVolume)
         {
             Console.WriteLine($"Cannot add this item:{item.GetName} because it will over max weight or max volume.");
             return false;
         }
+
+     
+        _currentWeight += weight;
+        _currentVolume += volume;
         _items.Add(item);
         return true;
     }
